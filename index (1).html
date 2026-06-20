@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diamond Maker — Ayurvedic Skin & Wellness | GLOWE Serum &amp; ORIVA7 Capsules</title>
+<meta name="description" content="Dion Diamond Maker — Pure Ayurvedic GLOWE Face Serum for anti-aging glow, and ORIVA7 Capsules for strength, stamina & immunity. 100% natural, GMP certified, Made in India.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500&family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --aubergine:#3D1F2E;
+    --aubergine-deep:#2A1420;
+    --gold:#C9A24B;
+    --gold-light:#E2C77E;
+    --cream:#F7F1E3;
+    --ivory:#FFFCF5;
+    --forest:#1F3D2B;
+    --forest-light:#2D5A3E;
+    --ink:#241712;
+    --line: rgba(61,31,46,0.14);
+    --shadow: 0 20px 50px -20px rgba(42,20,32,0.35);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter', sans-serif;
+    color:var(--ink);
+    background:var(--ivory);
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%; display:block;}
+  a{text-decoration:none; color:inherit;}
+  .serif{font-family:'Playfair Display', serif;}
+  .script{font-family:'Cormorant Garamond', serif;}
+
+  /* ---------- Texture / grain ---------- */
+  .grain{
+    position:fixed; inset:0; pointer-events:none; z-index:9999;
+    opacity:0.035; mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* ---------- Nav ---------- */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:1000;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 5%;
+    background:rgba(255,252,245,0.88);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+    transition:padding .3s ease;
+  }
+  .brand-mark{display:flex; align-items:center; gap:10px;}
+  .brand-mark .diamond{
+    width:30px; height:30px; flex-shrink:0;
+  }
+  .brand-name{font-family:'Playfair Display',serif; font-weight:700; font-size:1.15rem; letter-spacing:0.04em; color:var(--aubergine);}
+  .brand-name span{display:block; font-family:'Inter',sans-serif; font-weight:600; font-size:0.55rem; letter-spacing:0.22em; color:var(--gold); margin-top:1px;}
+  nav.links{display:flex; gap:34px; align-items:center;}
+  nav.links a{
+    font-size:0.82rem; font-weight:600; letter-spacing:0.03em; color:var(--aubergine);
+    position:relative; padding:4px 0;
+  }
+  nav.links a::after{
+    content:''; position:absolute; bottom:0; left:0; width:0; height:1.5px; background:var(--gold);
+    transition:width .25s ease;
+  }
+  nav.links a:hover::after{width:100%;}
+  .nav-cta{
+    background:var(--aubergine); color:var(--cream) !important; padding:11px 22px; border-radius:2px;
+    font-size:0.78rem !important; letter-spacing:0.08em !important; text-transform:uppercase;
+    border:1px solid var(--aubergine); transition:all .3s ease;
+  }
+  .nav-cta:hover{background:transparent; color:var(--aubergine) !important;}
+  .nav-cta::after{display:none;}
+  .menu-btn{display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none; padding:8px;}
+  .menu-btn span{width:24px; height:2px; background:var(--aubergine);}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    min-height:100vh;
+    display:flex; align-items:center;
+    position:relative;
+    padding:120px 5% 60px;
+    background:
+      radial-gradient(ellipse 90% 70% at 75% 15%, rgba(201,162,75,0.16), transparent 60%),
+      linear-gradient(160deg, var(--ivory) 0%, var(--cream) 55%, #EFE6D0 100%);
+    overflow:hidden;
+  }
+  .hero::before{
+    content:'';
+    position:absolute; top:-10%; right:-8%;
+    width:600px; height:600px; border-radius:50%;
+    border:1px solid rgba(201,162,75,0.25);
+  }
+  .hero::after{
+    content:'';
+    position:absolute; top:6%; right:2%;
+    width:460px; height:460px; border-radius:50%;
+    border:1px solid rgba(61,31,46,0.1);
+  }
+  .hero-grid{
+    display:grid; grid-template-columns:1.05fr 0.95fr; gap:60px; align-items:center;
+    max-width:1280px; margin:0 auto; width:100%; position:relative; z-index:2;
+  }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:10px;
+    font-size:0.72rem; font-weight:700; letter-spacing:0.22em; text-transform:uppercase;
+    color:var(--forest); margin-bottom:26px;
+  }
+  .eyebrow::before{content:''; width:30px; height:1px; background:var(--gold);}
+  .hero h1{
+    font-family:'Playfair Display', serif; font-weight:700;
+    font-size:clamp(2.6rem, 4.6vw, 4.1rem); line-height:1.05; color:var(--aubergine);
+    margin-bottom:24px; letter-spacing:-0.01em;
+  }
+  .hero h1 em{font-style:italic; color:var(--gold); font-weight:600;}
+  .hero p.lead{
+    font-size:1.08rem; line-height:1.7; color:#5A4A41; max-width:480px; margin-bottom:38px;
+  }
+  .hero-actions{display:flex; gap:16px; flex-wrap:wrap; margin-bottom:48px;}
+  .btn-primary{
+    background:var(--aubergine); color:var(--ivory); padding:17px 34px;
+    font-size:0.82rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase;
+    border-radius:2px; border:1px solid var(--aubergine); display:inline-flex; align-items:center; gap:10px;
+    transition:all .35s cubic-bezier(.4,0,.2,1);
+  }
+  .btn-primary:hover{background:var(--forest); border-color:var(--forest); transform:translateY(-2px); box-shadow:var(--shadow);}
+  .btn-secondary{
+    background:transparent; color:var(--aubergine); padding:17px 30px;
+    font-size:0.82rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase;
+    border-radius:2px; border:1px solid var(--aubergine); display:inline-flex; align-items:center; gap:10px;
+    transition:all .3s ease;
+  }
+  .btn-secondary:hover{background:var(--aubergine); color:var(--ivory);}
+  .hero-stats{display:flex; gap:40px; flex-wrap:wrap;}
+  .stat .num{font-family:'Playfair Display',serif; font-size:1.7rem; font-weight:700; color:var(--aubergine);}
+  .stat .lbl{font-size:0.72rem; color:#7A6A5F; letter-spacing:0.05em; margin-top:2px;}
+
+  .hero-visual{position:relative; display:flex; justify-content:center; align-items:center;}
+  .hero-visual .ring{
+    position:absolute; width:108%; height:108%; border-radius:50%;
+    border:1px solid rgba(201,162,75,0.4);
+  }
+  .hero-visual img{
+    max-width:340px; width:100%;
+    filter:drop-shadow(0 35px 45px rgba(42,20,32,0.28));
+    position:relative; z-index:2;
+  }
+  .floating-badge{
+    position:absolute; background:var(--ivory); border:1px solid var(--line);
+    border-radius:3px; padding:14px 18px; box-shadow:var(--shadow);
+    display:flex; align-items:center; gap:10px; z-index:3;
+  }
+  .floating-badge .dot{width:8px; height:8px; border-radius:50%; background:var(--forest); flex-shrink:0;}
+  .floating-badge .txt{font-size:0.72rem; font-weight:600; color:var(--aubergine); line-height:1.3;}
+  .badge-1{top:8%; left:-4%;}
+  .badge-2{bottom:14%; right:-6%;}
+
+  /* ---------- Marquee strip ---------- */
+  .marquee-strip{
+    background:var(--aubergine); color:var(--gold-light); padding:13px 0; overflow:hidden;
+    white-space:nowrap; border-top:1px solid rgba(201,162,75,0.3); border-bottom:1px solid rgba(201,162,75,0.3);
+  }
+  .marquee-track{display:inline-flex; animation:scroll 28s linear infinite;}
+  .marquee-track span{
+    font-size:0.78rem; font-weight:600; letter-spacing:0.12em; text-transform:uppercase;
+    padding:0 30px; display:inline-flex; align-items:center; gap:30px;
+  }
+  .marquee-track span::after{content:'◆'; color:var(--gold); font-size:0.55rem;}
+  @keyframes scroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+
+  /* ---------- Section generic ---------- */
+  section{padding:120px 5%;}
+  .section-inner{max-width:1280px; margin:0 auto;}
+  .section-head{max-width:680px; margin-bottom:70px;}
+  .section-head.center{margin-left:auto; margin-right:auto; text-align:center;}
+  .section-eyebrow{
+    font-size:0.72rem; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:var(--gold);
+    margin-bottom:16px; display:block;
+  }
+  .section-head h2{
+    font-family:'Playfair Display',serif; font-weight:700; color:var(--aubergine);
+    font-size:clamp(2rem, 3.4vw, 2.9rem); line-height:1.15; margin-bottom:18px;
+  }
+  .section-head p{color:#6B5A50; font-size:1.04rem; line-height:1.7;}
+
+  /* ---------- Products ---------- */
+  .products{background:var(--cream);}
+  .product-card{
+    display:grid; grid-template-columns:0.85fr 1.15fr; gap:0; align-items:stretch;
+    background:var(--ivory); border:1px solid var(--line); border-radius:4px; overflow:hidden;
+    margin-bottom:36px; box-shadow:0 1px 0 rgba(0,0,0,0.02);
+  }
+  .product-card.reverse{grid-template-columns:1.15fr 0.85fr;}
+  .product-card.reverse .pc-image{order:2;}
+  .product-card.reverse .pc-body{order:1;}
+  .pc-image{
+    background:linear-gradient(160deg,#EFE6D0,#E5D8B8);
+    display:flex; align-items:center; justify-content:center; padding:50px 30px; position:relative;
+    min-height:420px;
+  }
+  .pc-image img{max-width:78%; filter:drop-shadow(0 25px 30px rgba(42,20,32,0.2));}
+  .pc-tag{
+    position:absolute; top:24px; left:24px; background:var(--aubergine); color:var(--gold-light);
+    padding:7px 14px; font-size:0.65rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; border-radius:2px;
+  }
+  .pc-body{padding:52px 50px; display:flex; flex-direction:column; justify-content:center;}
+  .pc-body .pname{font-family:'Playfair Display',serif; font-weight:700; font-size:2.1rem; color:var(--aubergine); margin-bottom:6px;}
+  .pc-body .ptag{font-size:0.95rem; color:var(--forest-light); font-weight:600; margin-bottom:18px; font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.2rem;}
+  .pc-body .pdesc{color:#5A4A41; line-height:1.75; margin-bottom:26px; font-size:0.98rem;}
+  .pc-benefits{display:grid; grid-template-columns:1fr 1fr; gap:10px 18px; margin-bottom:28px;}
+  .pc-benefits li{
+    list-style:none; font-size:0.85rem; color:var(--ink); display:flex; align-items:center; gap:8px; font-weight:500;
+  }
+  .pc-benefits li::before{content:'◆'; color:var(--gold); font-size:0.6rem;}
+  .pc-price-row{display:flex; align-items:center; gap:18px; margin-bottom:24px; flex-wrap:wrap;}
+  .price{font-family:'Playfair Display',serif; font-size:1.9rem; font-weight:700; color:var(--aubergine);}
+  .price-sub{font-size:0.78rem; color:#8A7A6F;}
+  .pc-cta{display:flex; gap:12px; flex-wrap:wrap;}
+  .btn-buy{
+    background:var(--forest); color:var(--ivory); padding:14px 26px; border-radius:2px;
+    font-size:0.78rem; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; border:1px solid var(--forest);
+    display:inline-flex; align-items:center; gap:8px; transition:all .3s ease; cursor:pointer;
+  }
+  .btn-buy:hover{background:var(--aubergine); border-color:var(--aubergine); transform:translateY(-2px);}
+  .btn-whatsapp{
+    background:transparent; color:var(--aubergine); padding:14px 22px; border-radius:2px;
+    font-size:0.78rem; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; border:1px solid var(--aubergine);
+    display:inline-flex; align-items:center; gap:8px; transition:all .3s ease; cursor:pointer;
+  }
+  .btn-whatsapp:hover{background:var(--aubergine); color:var(--ivory);}
+  details.ingredients{margin-top:24px; border-top:1px solid var(--line); padding-top:18px;}
+  details.ingredients summary{
+    cursor:pointer; font-size:0.8rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase;
+    color:var(--forest); list-style:none; display:flex; align-items:center; gap:8px;
+  }
+  details.ingredients summary::-webkit-details-marker{display:none;}
+  details.ingredients summary::before{content:'+'; font-size:1.1rem; color:var(--gold); transition:transform .2s ease;}
+  details[open] summary::before{content:'–';}
+  .ingredient-list{
+    display:grid; grid-template-columns:1fr 1fr 1fr; gap:7px 16px; margin-top:16px; font-size:0.78rem; color:#6B5A50;
+  }
+  .ingredient-list span{display:block; padding:5px 0; border-bottom:1px dashed var(--line);}
+
+  /* ---------- Combo banner ---------- */
+  .combo{
+    background:linear-gradient(135deg, var(--aubergine) 0%, var(--aubergine-deep) 100%);
+    border-radius:6px; padding:60px 56px; display:grid; grid-template-columns:0.9fr 1.1fr; gap:40px; align-items:center;
+    color:var(--ivory); position:relative; overflow:hidden; margin-top:20px;
+  }
+  .combo::before{
+    content:''; position:absolute; top:-30%; right:-10%; width:400px; height:400px; border-radius:50%;
+    border:1px solid rgba(201,162,75,0.25);
+  }
+  .combo-img{position:relative; z-index:2;}
+  .combo-img img{border-radius:4px; box-shadow:0 25px 50px rgba(0,0,0,0.35);}
+  .combo-body{position:relative; z-index:2;}
+  .combo-eyebrow{color:var(--gold-light); font-size:0.72rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; margin-bottom:14px; display:block;}
+  .combo h3{font-family:'Playfair Display',serif; font-size:2.2rem; font-weight:700; margin-bottom:14px; line-height:1.2;}
+  .combo p{color:rgba(247,241,227,0.8); line-height:1.7; margin-bottom:24px; max-width:440px;}
+  .combo-price{display:flex; align-items:baseline; gap:14px; margin-bottom:28px;}
+  .combo-price .now{font-family:'Playfair Display',serif; font-size:2.1rem; font-weight:700; color:var(--gold-light);}
+  .combo-price .save{background:var(--gold); color:var(--aubergine-deep); padding:5px 12px; border-radius:20px; font-size:0.72rem; font-weight:700;}
+
+  /* ---------- Ingredients band ---------- */
+  .ing-band{background:var(--forest); color:var(--ivory);}
+  .ing-band .section-head h2, .ing-band .section-eyebrow{color:var(--ivory);}
+  .ing-band .section-eyebrow{color:var(--gold-light);}
+  .ing-band .section-head p{color:rgba(247,241,227,0.75);}
+  .ing-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:rgba(247,241,227,0.15); border-radius:4px; overflow:hidden;}
+  .ing-cell{background:var(--forest); padding:34px 24px; text-align:center;}
+  .ing-cell .ic{font-family:'Cormorant Garamond',serif; font-size:2.6rem; font-style:italic; color:var(--gold-light); margin-bottom:10px; line-height:1;}
+  .ing-cell .nm{font-weight:600; font-size:0.92rem; margin-bottom:6px;}
+  .ing-cell .ds{font-size:0.78rem; color:rgba(247,241,227,0.65); line-height:1.5;}
+
+  /* ---------- Trust / why us ---------- */
+  .why-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:30px;}
+  .why-card{padding:36px 28px; border:1px solid var(--line); border-radius:4px; background:var(--ivory); transition:all .3s ease;}
+  .why-card:hover{border-color:var(--gold); transform:translateY(-4px); box-shadow:var(--shadow);}
+  .why-icon{width:46px; height:46px; margin-bottom:20px;}
+  .why-card h4{font-family:'Playfair Display',serif; font-weight:700; font-size:1.15rem; color:var(--aubergine); margin-bottom:10px;}
+  .why-card p{font-size:0.88rem; color:#6B5A50; line-height:1.65;}
+
+  /* ---------- Testimonials ---------- */
+  .testimonials{background:var(--cream);}
+  .t-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:28px;}
+  .t-card{background:var(--ivory); border:1px solid var(--line); border-radius:4px; padding:34px 30px;}
+  .t-stars{color:var(--gold); font-size:0.95rem; letter-spacing:2px; margin-bottom:18px;}
+  .t-card p{font-size:0.92rem; line-height:1.75; color:#4A3A32; margin-bottom:22px; font-style:italic;}
+  .t-who{display:flex; align-items:center; gap:12px;}
+  .t-avatar{width:38px; height:38px; border-radius:50%; background:var(--forest); color:var(--ivory); display:flex; align-items:center; justify-content:center; font-family:'Playfair Display',serif; font-weight:700; font-size:0.95rem;}
+  .t-name{font-weight:600; font-size:0.85rem; color:var(--aubergine);}
+  .t-loc{font-size:0.74rem; color:#8A7A6F;}
+
+  /* ---------- FAQ ---------- */
+  .faq-item{border-bottom:1px solid var(--line); padding:26px 0;}
+  .faq-q{display:flex; justify-content:space-between; align-items:center; cursor:pointer; gap:20px;}
+  .faq-q h4{font-family:'Playfair Display',serif; font-weight:600; font-size:1.08rem; color:var(--aubergine);}
+  .faq-q .plus{font-size:1.3rem; color:var(--gold); flex-shrink:0; transition:transform .3s ease;}
+  .faq-item.open .plus{transform:rotate(45deg);}
+  .faq-a{max-height:0; overflow:hidden; transition:max-height .35s ease;}
+  .faq-a p{padding-top:16px; color:#6B5A50; line-height:1.7; font-size:0.92rem; max-width:680px;}
+
+  /* ---------- CTA banner ---------- */
+  .cta-banner{
+    background:
+      radial-gradient(ellipse 80% 100% at 50% 0%, rgba(201,162,75,0.18), transparent 60%),
+      linear-gradient(160deg, var(--aubergine) 0%, var(--aubergine-deep) 100%);
+    text-align:center; padding:100px 5%; color:var(--ivory);
+  }
+  .cta-banner h2{font-family:'Playfair Display',serif; font-size:clamp(1.9rem,3.5vw,2.8rem); margin-bottom:18px;}
+  .cta-banner p{color:rgba(247,241,227,0.75); max-width:560px; margin:0 auto 36px; line-height:1.7;}
+  .cta-banner .hero-actions{justify-content:center;}
+  .cta-banner .btn-secondary{color:var(--ivory); border-color:rgba(247,241,227,0.4);}
+  .cta-banner .btn-secondary:hover{background:var(--ivory); color:var(--aubergine);}
+
+  /* ---------- Footer ---------- */
+  footer{background:var(--aubergine-deep); color:rgba(247,241,227,0.7); padding:70px 5% 30px;}
+  .footer-grid{
+    max-width:1280px; margin:0 auto; display:grid; grid-template-columns:1.4fr 1fr 1fr 1.2fr; gap:50px; padding-bottom:50px;
+    border-bottom:1px solid rgba(247,241,227,0.12);
+  }
+  .footer-brand .brand-name{color:var(--ivory);}
+  .footer-brand p{margin-top:18px; font-size:0.86rem; line-height:1.75; max-width:280px; color:rgba(247,241,227,0.55);}
+  .footer-col h5{font-family:'Inter',sans-serif; font-size:0.74rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold-light); margin-bottom:20px;}
+  .footer-col a, .footer-col p{display:block; font-size:0.86rem; margin-bottom:13px; color:rgba(247,241,227,0.65); line-height:1.6; transition:color .2s ease;}
+  .footer-col a:hover{color:var(--gold-light);}
+  .footer-bottom{
+    max-width:1280px; margin:0 auto; padding-top:26px; display:flex; justify-content:space-between; align-items:center;
+    font-size:0.78rem; color:rgba(247,241,227,0.45); flex-wrap:wrap; gap:12px;
+  }
+
+  /* ---------- WhatsApp float ---------- */
+  .wa-float{
+    position:fixed; bottom:26px; right:26px; z-index:900;
+    width:58px; height:58px; border-radius:50%; background:#25D366;
+    display:flex; align-items:center; justify-content:center; box-shadow:0 10px 30px rgba(37,211,102,0.4);
+    transition:transform .3s ease; cursor:pointer;
+  }
+  .wa-float:hover{transform:scale(1.08);}
+
+  /* ---------- Reveal animation ---------- */
+  .reveal{opacity:0; transform:translateY(28px); transition:opacity .8s ease, transform .8s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 980px){
+    nav.links{display:none;}
+    .menu-btn{display:flex;}
+    .hero-grid{grid-template-columns:1fr; text-align:center;}
+    .hero p.lead{margin-left:auto; margin-right:auto;}
+    .hero-actions{justify-content:center;}
+    .hero-stats{justify-content:center;}
+    .hero-visual{margin-top:40px;}
+    .badge-1, .badge-2{display:none;}
+    .product-card, .product-card.reverse{grid-template-columns:1fr;}
+    .product-card.reverse .pc-image, .product-card.reverse .pc-body{order:initial;}
+    .pc-body{padding:36px 28px;}
+    .combo{grid-template-columns:1fr; padding:40px 28px; text-align:center;}
+    .combo-body p{margin-left:auto; margin-right:auto;}
+    .combo-price{justify-content:center;}
+    .ing-grid{grid-template-columns:1fr 1fr;}
+    .why-grid{grid-template-columns:1fr 1fr;}
+    .t-grid{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr 1fr; gap:36px;}
+  }
+  @media (max-width: 560px){
+    section{padding:80px 6%;}
+    .ing-grid{grid-template-columns:1fr;}
+    .why-grid{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr;}
+    .pc-benefits{grid-template-columns:1fr;}
+    .ingredient-list{grid-template-columns:1fr 1fr;}
+    .combo-price{flex-direction:column; align-items:flex-start; gap:8px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="grain"></div>
+
+<!-- ===== HEADER ===== -->
+<header>
+  <a href="#home" class="brand-mark">
+    <svg class="diamond" viewBox="0 0 100 100" fill="none">
+      <path d="M50 8 L80 30 L50 92 L20 30 Z" stroke="#C9A24B" stroke-width="3" fill="none"/>
+      <path d="M20 30 L80 30 M37 30 L50 8 L63 30 M37 30 L50 92 M63 30 L50 92" stroke="#C9A24B" stroke-width="2.2"/>
+    </svg>
+    <div class="brand-name">DIAMOND MAKER<span>DION · AYURVEDA</span></div>
+  </a>
+  <nav class="links">
+    <a href="#products">Products</a>
+    <a href="#ingredients">Ingredients</a>
+    <a href="#why">Why Us</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact" class="nav-cta">Order Now</a>
+  </nav>
+  <button class="menu-btn" id="menuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+</header>
+
+<!-- Mobile menu -->
+<div id="mobileMenu" style="display:none; position:fixed; inset:0; background:var(--ivory); z-index:1500; padding:100px 8% 40px; flex-direction:column; gap:28px;">
+  <a href="#products" class="mlink">Products</a>
+  <a href="#ingredients" class="mlink">Ingredients</a>
+  <a href="#why" class="mlink">Why Us</a>
+  <a href="#reviews" class="mlink">Reviews</a>
+  <a href="#faq" class="mlink">FAQ</a>
+  <a href="#contact" class="mlink">Order Now</a>
+  <button id="closeMenu" style="position:absolute; top:24px; right:6%; background:none; border:none; font-size:1.8rem; color:var(--aubergine);">×</button>
+</div>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="home">
+  <div class="hero-grid">
+    <div class="hero-copy reveal in">
+      <span class="eyebrow">100% Ayurvedic · GMP Certified</span>
+      <h1>Ancient Ayurveda,<br><em>Refined</em> for Modern Living</h1>
+      <p class="lead">Dion Diamond Maker brings you two precision-formulated essentials — a radiance-restoring face serum and a strength &amp; immunity capsule, both rooted in time-tested ayurvedic botanicals.</p>
+      <div class="hero-actions">
+        <a href="#products" class="btn-primary">Explore Products →</a>
+        <a href="https://wa.me/917420824050?text=Hi%2C%20I%27m%20interested%20in%20Diamond%20Maker%20products" target="_blank" class="btn-secondary">Order on WhatsApp</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><div class="num">19+</div><div class="lbl">Ayurvedic Botanicals</div></div>
+        <div class="stat"><div class="num">100%</div><div class="lbl">Natural &amp; Toxin-Free</div></div>
+        <div class="stat"><div class="num">GMP</div><div class="lbl">Certified Facility</div></div>
+      </div>
+    </div>
+    <div class="hero-visual reveal in">
+      <div class="ring"></div>
+      <div class="floating-badge badge-1"><div class="dot"></div><div class="txt">Cruelty Free<br>No Parabens</div></div>
+      <img src="images/glowe_hero.webp" alt="GLOWE Pure Ayurvedic Face Serum by Dion Diamond Maker">
+      <div class="floating-badge badge-2"><div class="dot"></div><div class="txt">Made in India<br>ISO 22000:2005</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MARQUEE ===== -->
+<div class="marquee-strip">
+  <div class="marquee-track">
+    <span>100% Pure &amp; Natural</span><span>GMP Certified</span><span>No Parabens No Chemicals</span><span>Cruelty Free</span><span>Made in India</span><span>Ayurvedic Proprietary Medicine</span>
+    <span>100% Pure &amp; Natural</span><span>GMP Certified</span><span>No Parabens No Chemicals</span><span>Cruelty Free</span><span>Made in India</span><span>Ayurvedic Proprietary Medicine</span>
+  </div>
+</div>
+
+<!-- ===== PRODUCTS ===== -->
+<section class="products" id="products">
+  <div class="section-inner">
+    <div class="section-head reveal">
+      <span class="section-eyebrow">Our Collection</span>
+      <h2>Two Essentials. Built on Ayurveda.</h2>
+      <p>Every formulation is inspired by ancient remedies and crafted with modern precision — for skin that glows and a body that stays strong.</p>
+    </div>
+
+    <!-- GLOWE -->
+    <div class="product-card reveal">
+      <div class="pc-image">
+        <span class="pc-tag">For Anti-Aging</span>
+        <img src="images/glowe_hero.webp" alt="GLOWE Pure Ayurvedic Face Serum 30ml">
+      </div>
+      <div class="pc-body">
+        <div class="pname">GLOWE</div>
+        <div class="ptag">Pure Ayurvedic Face Serum</div>
+        <p class="pdesc">A 100% pure, all-natural serum inspired by ancient ayurvedic beauty remedies. Formulated with Shilajit, Ashwagandha and 17 more botanicals to visibly reduce spots, soften fine lines and restore your skin's natural firmness.</p>
+        <ul class="pc-benefits">
+          <li>Glow &amp; Spot Control</li>
+          <li>Fine Line Reduction</li>
+          <li>Tones &amp; Firms Skin</li>
+          <li>Deep Hydration</li>
+        </ul>
+        <div class="pc-price-row">
+          <div class="price">₹1,199</div>
+          <div class="price-sub">30 ml / 1 fl. oz. · Inclusive of all taxes</div>
+        </div>
+        <div class="pc-cta">
+          <button class="btn-buy" onclick="buyNow('GLOWE Pure Ayurvedic Face Serum', 1199)">Buy Now — Pay Online</button>
+          <a href="https://wa.me/917420824050?text=Hi%2C%20I%20want%20to%20order%20GLOWE%20Face%20Serum%20(%E2%82%B91%2C199)" target="_blank" class="btn-whatsapp">Order via WhatsApp</a>
+        </div>
+        <details class="ingredients">
+          <summary>View Full Ingredient List (19 Botanicals)</summary>
+          <div class="ingredient-list">
+            <span>Shilajit Extract — 40mg</span><span>Ashwagandha Root — 50mg</span><span>Kaunch Beej — 30mg</span>
+            <span>Guduchi Extract — 35mg</span><span>Tagar Extract — 15mg</span><span>Haridra (Turmeric) — 15mg</span>
+            <span>Yashtimadhu (Licorice) — 15mg</span><span>Kalmegh Extract — 20mg</span><span>Daruharidra — 15mg</span>
+            <span>Vidarikand Extract — 20mg</span><span>Amla Fruit Extract — 30mg</span><span>Moringa Leaf — 40mg</span>
+            <span>Tulsi Leaf Extract — 20mg</span><span>Arjuna Bark Extract — 25mg</span><span>Punarnava Extract — 25mg</span>
+            <span>Brahmi Extract — 20mg</span><span>Pippali Fruit Powder — 20mg</span><span>Triphala Extract — 25mg</span>
+            <span>Bhumiamalaki — 20mg</span>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <!-- ORIVA7 -->
+    <div class="product-card reverse reveal">
+      <div class="pc-image">
+        <span class="pc-tag">Stay Strong · Stay Healthy</span>
+        <img src="images/oriva7_bottle.webp" alt="ORIVA7 Capsules — 60 Capsules">
+      </div>
+      <div class="pc-body">
+        <div class="pname">ORIVA7</div>
+        <div class="ptag">Ayurvedic Wellness Capsule</div>
+        <p class="pdesc">An ayurvedic proprietary medicine crafted to support strength, stamina and immunity. Each capsule blends 19 powerful botanicals like Shilajit, Ashwagandha and Triphala — taken twice daily for sustained energy and vitality.</p>
+        <ul class="pc-benefits">
+          <li>Strength &amp; Stamina</li>
+          <li>Energy Support</li>
+          <li>Immunity Boost</li>
+          <li>Organ Wellness</li>
+        </ul>
+        <div class="pc-price-row">
+          <div class="price">₹2,299</div>
+          <div class="price-sub">60 Capsules · Inclusive of all taxes</div>
+        </div>
+        <div class="pc-cta">
+          <button class="btn-buy" onclick="buyNow('ORIVA7 Ayurvedic Capsules', 2299)">Buy Now — Pay Online</button>
+          <a href="https://wa.me/917420824050?text=Hi%2C%20I%20want%20to%20order%20ORIVA7%20Capsules%20(%E2%82%B92%2C299)" target="_blank" class="btn-whatsapp">Order via WhatsApp</a>
+        </div>
+        <details class="ingredients">
+          <summary>View Full Ingredient List (19 Botanicals)</summary>
+          <div class="ingredient-list">
+            <span>Shilajit Extract — 40mg</span><span>Ashwagandha Root — 50mg</span><span>Kaunch Beej — 30mg</span>
+            <span>Guduchi Extract — 35mg</span><span>Tagar Extract — 15mg</span><span>Haridra Extract — 15mg</span>
+            <span>Yashtimadhu Extract — 15mg</span><span>Kalmegh Extract — 20mg</span><span>Daruharidra — 15mg</span>
+            <span>Vidarikand Extract — 20mg</span><span>Amla Fruit Extract — 30mg</span><span>Moringa Leaf — 40mg</span>
+            <span>Tulsi Leaf Extract — 20mg</span><span>Arjuna Bark Extract — 25mg</span><span>Punarnava Extract — 25mg</span>
+            <span>Brahmi Extract — 20mg</span><span>Pippali Fruit Powder — 20mg</span><span>Triphala Extract — 25mg</span>
+            <span>Bhumiamalaki — 20mg</span>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <!-- COMBO -->
+    <div class="combo reveal">
+      <div class="combo-img">
+        <img src="images/combo_kit.webp" alt="Health Wellness Kit — GLOWE Serum + ORIVA7 Capsules Combo">
+      </div>
+      <div class="combo-body">
+        <span class="combo-eyebrow">Best Value · Save More</span>
+        <h3>Health Wellness Kit</h3>
+        <p>The complete ayurvedic ritual — GLOWE Face Serum + 60 ORIVA7 Capsules together. One kit for radiant skin, on the outside, and lasting strength on the inside.</p>
+        <div class="combo-price">
+          <div class="now">₹3,498</div>
+          <div class="save">Combo Pack</div>
+        </div>
+        <div class="pc-cta">
+          <button class="btn-buy" onclick="buyNow('Health Wellness Kit (GLOWE + ORIVA7)', 3498)">Buy Now — Pay Online</button>
+          <a href="https://wa.me/917420824050?text=Hi%2C%20I%20want%20to%20order%20the%20Health%20Wellness%20Kit%20(%E2%82%B93%2C498)" target="_blank" class="btn-whatsapp" style="border-color:rgba(247,241,227,0.4); color:var(--ivory);">Order via WhatsApp</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== INGREDIENTS BAND ===== -->
+<section class="ing-band" id="ingredients">
+  <div class="section-inner">
+    <div class="section-head center reveal">
+      <span class="section-eyebrow">The Botanicals</span>
+      <h2>Rooted in Ancient Wisdom</h2>
+      <p>Five hero ingredients, drawn from centuries-old ayurvedic tradition, anchor every formulation.</p>
+    </div>
+    <div class="ing-grid reveal">
+      <div class="ing-cell"><div class="ic">Sh</div><div class="nm">Shilajit</div><div class="ds">Boosts energy, stamina &amp; cellular vitality</div></div>
+      <div class="ing-cell"><div class="ic">As</div><div class="nm">Ashwagandha</div><div class="ds">Adaptogen for strength &amp; stress resilience</div></div>
+      <div class="ing-cell"><div class="ic">Tr</div><div class="nm">Triphala</div><div class="ds">Supports digestion &amp; gut balance</div></div>
+      <div class="ing-cell"><div class="ic">Br</div><div class="nm">Brahmi</div><div class="ds">Traditionally used for clarity &amp; calm</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHY US ===== -->
+<section id="why">
+  <div class="section-inner">
+    <div class="section-head reveal">
+      <span class="section-eyebrow">Why Diamond Maker</span>
+      <h2>Quality You Can Verify</h2>
+      <p>Every batch is manufactured under strict quality protocols, with full transparency on sourcing and certification.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <svg class="why-icon" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="20" stroke="#C9A24B" stroke-width="2"/><path d="M16 24l5 5 11-11" stroke="#1F3D2B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h4>GMP Certified</h4>
+        <p>Manufactured by D'Ultimate Life Sciences, an ISO 22000:2005 certified facility in Bhilwara, Rajasthan.</p>
+      </div>
+      <div class="why-card reveal">
+        <svg class="why-icon" viewBox="0 0 48 48" fill="none"><path d="M24 6l16 7v11c0 10-7 16-16 19C15 40 8 34 8 24V13z" stroke="#C9A24B" stroke-width="2" stroke-linejoin="round"/></svg>
+        <h4>100% Safe &amp; Natural</h4>
+        <p>No parabens, no harsh chemicals. Vegetarian capsules with no added preservatives.</p>
+      </div>
+      <div class="why-card reveal">
+        <svg class="why-icon" viewBox="0 0 48 48" fill="none"><rect x="8" y="14" width="32" height="24" rx="2" stroke="#C9A24B" stroke-width="2"/><path d="M8 18l16 11 16-11" stroke="#1F3D2B" stroke-width="2"/></svg>
+        <h4>Direct Support</h4>
+        <p>Real help when you need it — reach our team directly via WhatsApp or email for any question.</p>
+      </div>
+      <div class="why-card reveal">
+        <svg class="why-icon" viewBox="0 0 48 48" fill="none"><path d="M24 4l6 12 13 2-9.5 9 2 13L24 34l-11.5 6 2-13L5 18l13-2z" stroke="#C9A24B" stroke-width="2" stroke-linejoin="round"/></svg>
+        <h4>Made in India</h4>
+        <p>Proudly formulated, manufactured and packaged in India — supporting local ayurvedic craftsmanship.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section class="testimonials" id="reviews">
+  <div class="section-inner">
+    <div class="section-head center reveal">
+      <span class="section-eyebrow">Customer Stories</span>
+      <h2>Loved by Real People</h2>
+    </div>
+    <div class="t-grid">
+      <div class="t-card reveal">
+        <div class="t-stars">★★★★★</div>
+        <p>"GLOWE has genuinely changed my skin texture in about three weeks. The glow is real and it doesn't feel greasy at all."</p>
+        <div class="t-who"><div class="t-avatar">P</div><div><div class="t-name">Priya M.</div><div class="t-loc">Jaipur</div></div></div>
+      </div>
+      <div class="t-card reveal">
+        <div class="t-stars">★★★★★</div>
+        <p>"I take ORIVA7 every morning and evening — noticeably better stamina during my workouts and I don't tire as easily."</p>
+        <div class="t-who"><div class="t-avatar">R</div><div><div class="t-name">Rohit S.</div><div class="t-loc">Udaipur</div></div></div>
+      </div>
+      <div class="t-card reveal">
+        <div class="t-stars">★★★★★</div>
+        <p>"Bought the combo kit for myself and my mother. Packaging feels premium and the WhatsApp support team was very responsive."</p>
+        <div class="t-who"><div class="t-avatar">A</div><div><div class="t-name">Anjali K.</div><div class="t-loc">Bhilwara</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section id="faq">
+  <div class="section-inner" style="max-width:820px;">
+    <div class="section-head reveal">
+      <span class="section-eyebrow">Questions</span>
+      <h2>Frequently Asked</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <div class="faq-q"><h4>How do I use GLOWE Face Serum?</h4><span class="plus">+</span></div>
+        <div class="faq-a"><p>Apply 3-4 drops on cleansed face and neck, morning and night. Gently massage in upward strokes until absorbed. Follow with moisturizer for best results.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q"><h4>What is the recommended dosage for ORIVA7?</h4><span class="plus">+</span></div>
+        <div class="faq-a"><p>Take one capsule before meals in the morning and evening, or as directed by your physician. Avoid during pregnancy and lactation; consult a doctor if you have any medical conditions.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q"><h4>Are these products safe for daily, long-term use?</h4><span class="plus">+</span></div>
+        <div class="faq-a"><p>Yes. Both products are 100% ayurvedic, GMP certified, and free from parabens and harsh chemicals — formulated for regular use as part of your daily routine.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q"><h4>How can I place an order?</h4><span class="plus">+</span></div>
+        <div class="faq-a"><p>You can pay securely online using the "Buy Now" button, or simply message us on WhatsApp at +91 74208 24050 and our team will help you complete the order.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q"><h4>What if I receive a damaged or sealed-broken product?</h4><span class="plus">+</span></div>
+        <div class="faq-a"><p>Please do not accept the product if the cap or seal is broken. Contact our support team immediately at support@diamondmaker.in or call our helpline for a replacement.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA BANNER ===== -->
+<section class="cta-banner" id="contact">
+  <span class="eyebrow" style="justify-content:center; color:var(--gold-light);">Ready When You Are</span>
+  <h2>Begin Your Ayurvedic Ritual Today</h2>
+  <p>Glow on the outside, strength on the inside. Order directly online or talk to us on WhatsApp — we're happy to help you choose what's right for you.</p>
+  <div class="hero-actions">
+    <a href="https://wa.me/917420824050?text=Hi%2C%20I%27m%20interested%20in%20Diamond%20Maker%20products" target="_blank" class="btn-primary" style="background:var(--gold); border-color:var(--gold); color:var(--aubergine-deep);">Chat on WhatsApp →</a>
+    <a href="#products" class="btn-secondary">View Products</a>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="brand-mark">
+        <svg class="diamond" viewBox="0 0 100 100" fill="none">
+          <path d="M50 8 L80 30 L50 92 L20 30 Z" stroke="#C9A24B" stroke-width="3" fill="none"/>
+          <path d="M20 30 L80 30 M37 30 L50 8 L63 30 M37 30 L50 92 M63 30 L50 92" stroke="#C9A24B" stroke-width="2.2"/>
+        </svg>
+        <div class="brand-name">DIAMOND MAKER<span>DION · AYURVEDA</span></div>
+      </div>
+      <p>Dion Diamond Maker Private Limited — pure ayurvedic skincare &amp; wellness, crafted with ancient botanicals and modern care.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Shop</h5>
+      <a href="#products">GLOWE Face Serum</a>
+      <a href="#products">ORIVA7 Capsules</a>
+      <a href="#products">Health Wellness Kit</a>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <a href="#why">Why Diamond Maker</a>
+      <a href="#ingredients">Our Ingredients</a>
+      <a href="#faq">FAQs</a>
+    </div>
+    <div class="footer-col">
+      <h5>Get in Touch</h5>
+      <p style="margin-bottom:8px;">Infinity Business Park, 2nd Floor,<br>Shop No. 34, Aavri Mata Choraya,<br>Bhilwara, Rajasthan – 311802</p>
+      <a href="tel:+917420824050">📞 +91 74208 24050</a>
+      <a href="mailto:support@diamondmaker.in">📧 support@diamondmaker.in</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Dion Diamond Maker Private Limited. All Rights Reserved.</span>
+    <span>Made in India 🇮🇳</span>
+  </div>
+</footer>
+
+<!-- WhatsApp float button -->
+<a href="https://wa.me/917420824050?text=Hi%2C%20I%27m%20interested%20in%20Diamond%20Maker%20products" target="_blank" class="wa-float" aria-label="Chat on WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.6 6.32A8.86 8.86 0 0 0 12.05 4 8.94 8.94 0 0 0 4.4 18.16L3 21l3.92-1.36A8.94 8.94 0 0 0 12.05 21a8.96 8.96 0 0 0 5.55-14.68ZM12.05 19.4a7.4 7.4 0 0 1-3.78-1.03l-.27-.16-2.81.97.94-2.74-.18-.28A7.43 7.43 0 1 1 19.5 12.93a7.4 7.4 0 0 1-7.45 6.47Zm4.08-5.56c-.22-.11-1.31-.65-1.51-.72-.2-.07-.35-.11-.5.11-.15.22-.57.72-.7.87-.13.15-.26.16-.48.05-.22-.11-.93-.34-1.77-1.09-.65-.58-1.1-1.3-1.22-1.52-.13-.22-.01-.34.1-.45.1-.1.22-.26.33-.39.11-.13.15-.22.22-.37.07-.15.04-.28-.02-.39-.05-.11-.5-1.2-.68-1.65-.18-.43-.36-.37-.5-.38-.13-.01-.28-.01-.43-.01-.15 0-.39.06-.6.28-.2.22-.78.76-.78 1.86s.8 2.16.91 2.31c.11.15 1.57 2.4 3.8 3.36.53.23.94.36 1.27.47.53.17 1.02.14 1.4.09.43-.06 1.31-.53 1.49-1.05.18-.51.18-.95.13-1.04-.05-.1-.2-.16-.42-.27Z"/></svg>
+</a>
+
+<script>
+  // Mobile menu
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const closeMenu = document.getElementById('closeMenu');
+  menuBtn.addEventListener('click', ()=>{ mobileMenu.style.display='flex'; });
+  closeMenu.addEventListener('click', ()=>{ mobileMenu.style.display='none'; });
+  document.querySelectorAll('.mlink').forEach(l=>l.addEventListener('click', ()=>{ mobileMenu.style.display='none'; }));
+
+  // Header padding on scroll
+  window.addEventListener('scroll', ()=>{
+    document.querySelector('header').style.padding = window.scrollY > 30 ? '10px 5%' : '16px 5%';
+  });
+
+  // Reveal on scroll
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:0.12});
+  revealEls.forEach(el=>io.observe(el));
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-item').forEach(item=>{
+    const q = item.querySelector('.faq-q');
+    const a = item.querySelector('.faq-a');
+    q.addEventListener('click', ()=>{
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i=>{ i.classList.remove('open'); i.querySelector('.faq-a').style.maxHeight=null; });
+      if(!isOpen){ item.classList.add('open'); a.style.maxHeight = a.scrollHeight + 'px'; }
+    });
+  });
+
+  // ===== PAYMENT INTEGRATION =====
+  // Replace 'rzp_test_XXXXXXXXXX' below with YOUR Razorpay Key ID once you have your account ready.
+  // This is currently a DEMO checkout — see the message in chat for how to connect your real gateway.
+  function buyNow(productName, amount){
+    const options = {
+      key: "rzp_test_YOUR_KEY_HERE", // <-- aapki Razorpay Key ID yahan daalein
+      amount: amount * 100, // paise mein
+      currency: "INR",
+      name: "Dion Diamond Maker",
+      description: productName,
+      image: "images/logo_full.webp",
+      handler: function(response){
+        alert("Payment successful! Payment ID: " + response.razorpay_payment_id + "\\n\\nHum aapko jald hi WhatsApp/Email par confirmation bhejenge.");
+      },
+      prefill: { name: "", email: "", contact: "" },
+      theme: { color: "#3D1F2E" }
+    };
+    if (typeof Razorpay === "undefined") {
+      alert("Payment gateway abhi connect nahi hua hai.\\n\\nProduct: " + productName + "\\nAmount: ₹" + amount + "\\n\\nKripya WhatsApp button se order karein, ya Razorpay setup complete karein.");
+      return;
+    }
+    const rzp = new Razorpay(options);
+    rzp.open();
+  }
+</script>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+</body>
+</html>
